@@ -1,0 +1,417 @@
+1 The SAS System                                                                                    16:44 Monday, June 15, 2015
+
+NOTE: Copyright (c) 2002-2008 by SAS Institute Inc., Cary, NC, USA.
+NOTE: SAS (r) Proprietary Software 9.2 (TS2M0)
+      Licensed to XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, Site 99999999.
+NOTE: This session is executing on the X64_SRV  platform.
+
+
+
+
+NOTE: AUTOEXEC processing beginning; file is XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.sas.
+
+Note: Program file is XXXXXXXXXXXXXXXXXXXXXXXXXXXXX\Read Problem Rows.sas.
+
+NOTE: AUTOEXEC processing completed.
+
+1          /* Problem rows: 468427 554716 690313 936853 986161
+2          List 5 before, row, and 5 after */
+3
+4          filename in 'repdata_data_StormData.csv' lrecl=16384;
+5          run;
+6
+7          data _null_;
+8              infile in;
+9              input;
+10             if
+11                 (468422 <= _n_ <= 468432) or
+12                 (554711 <= _n_ <= 554721) or
+13                 (690308 <= _n_ <= 690318) or
+14                 (936848 <= _n_ <= 936858) or
+15                 (986156 <= _n_ <= 986166) then list;
+16             if _n_ in (468433, 554722, 690319, 936859, 986167) then put / 131*'=' /;
+17             if _n_ > 986166 then stop;
+18             run;
+
+NOTE: The infile IN is:
+      Filename=XXXXXXXXXXXXXXXXXXXXXXXXXXXXX\repdata_data_StormData.csv,
+      RECFM=V,LRECL=16384,
+      File Size (bytes)=561637449,
+      Last Modified=15Jun2015:10:23:20,
+      Create Time=15Jun2015:10:42:11
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+468422     0
+468423    The tornado maintained a nearly straight path to the northeast paralleling Interstate 44, as it ente
+     101  red McClain County, except when it made a slight jog to the right and moved directly over the 16th S
+     201  treet overpass in Newcastle where a woman was killed when she was blown out from under the overpass.
+     301   The tornado continued into northern sections of rural Newcastle and crossed the interstate again ju
+     401  st north of the US 62 Newcastle interchange. While this tornado was moving through the northern port
+     501  ion of Newcastle, a satellite tornado (A10) touched down in a field in rural north Newcastle, and ca
+2 The SAS System                                                                                                 16:44 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+     601  used no damage (F0). Two areas of F4 damage were observed in McClain County, all associated with tor
+     701  nado A9. The first area overlapped the Grady/McClain County line and extended to about 3 miles north
+     801  west of Newcastle, ending just west of the 16th St. overpass on Interstate 44, while the other area
+     901  was observed 2 miles northwest of Newcastle. Thirty-eight homes and 2 businesses were destroyed in M
+    1001  cClain County, and 40 homes were damaged. Damage then diminished to F2 intensity as the tornado cros
+    1101  sed the South Canadian River into northern Cleveland County. 1160
+468424            7
+468425    The tornado entered Cleveland County between Portland and May and between SW 164th and SW 179th in s
+     101  outh Oklahoma City. Damage was rated F2 in this area with a path width averaging 1/2 of a mile. The
+     201  first major housing development to be struck in Cleveland County was Country Place Estates located j
+     301  ust west of Pennsylvania Ave. where about 50 homes were damaged, with 1 dozen of these homes receivi
+     401  ng F4 damage. One slab home was cleanly swept from its foundation, and several vehicles were picked
+     501  up from the subdivision and tossed across Pennsylvania Ave, a distance of approximately 1/4 of a mil
+     601  e. One vehicle was found under a bridge just east of the intersection of Pennsylvania and SW 134th.
+     701  This particular area of damage has been rated high F4/low F5. Oklahoma City Police indicated that pa
+     801  rt of an airplane wing, believed to have originated from Chickasha Municipal Airport in Grady County
+     901  , landed in this area. The tornado then tracked through Eastlake Estates, a densely populated housin
+    1001  g development, located north of SW 134th and between Pennsylvania and Western, where 3 fatalities oc
+    1101  curred. Entire rows of homes were virtually flattened to piles of rubble. Four adjacent homes on one
+    1201   street were virtually cleaned off their foundations leaving only concrete slabs, which earned an F5
+    1301   rating. Three other homes in this housing division also received F5 damage, with the remaining dest
+    1401  ruction rated high F4. Three persons also died in the 600-unit Emerald Springs Apartments on Western
+    1501   Ave. located across the street from Eastlake Estates. One 2-story apartment building on the north e
+    1601  nd of the apartment complex was virtually flattened, and received an F5 rating. Westmoore High Schoo
+    1701  l, located just north of Eastlake Estates, was also heavily damaged. Although a well-attended awards
+    1801   ceremony was being held at the school during the tornado, no one was injured, however dozens of veh
+    1901  icles in the school parking lot were either damaged or destroyed. F4 damage continued northeast into
+    2001   another residential area east of Western Ave. and south of 119th St. The tornado then entered the w
+    2101  estern city limits of Moore (Cleveland County) along Santa Fe and near NW 12th, and produced damage
+    2201  between 1/2 and 3/4 of a mile wide. Maximum damage, rated high F4/low F5, extended northeast to near
+    2301   Janeway with several large groups of homes flattened. Four persons died in this residential area. F
+    2401  4 damage continued to South Shields just north of the junction with Interstate 35. A woman was also
+    2501  killed when she was blown out from under the Shields overpass of Interstate 35. The tornado appeared
+    2601   to weaken just slightly after crossing interstate 35, however it remained a formidable storm with w
+    2701  idespread high F3/low F4 damage observed in Highland Park, a residential area, south of the First Ba
+    2801  ptist Church on 27th St. in Moore. Escaping with relatively minor damage, and being located near the
+    2901   halfway point of the tornado path, the First Baptist Church in Moore eventually served as the prima
+    3001  ry coordination center for most tornado relief efforts. The tornado then continued northeast and ent
+    3101  ered the southern portion of a sparsely populated industrial district. F4 damage continued through t
+    3201  his area, to near SE 89th St., the Cleveland/Oklahoma County border.   3270
+468426     0
+468427    Moving into Oklahoma County, the tornado curved northward, through the remaining industrial district
+     101   north of Interstate 240 where 2 businesses were destroyed, with the damage rated F4. Two persons we
+     201  re also killed at a trucking company near the intersection of S. Bryant Ave. and Interstate 240. A f
+     301  reight car, with an approximate weight of 18 tons, was picked up intermittently and blown 3/4 of a m
+     401  ile across an open field, with the body of the freight car being deposited southeast of the intersec
+     501  tion of S. Sunnylane Rd. and SE 59th. Gouge marks were observed in the field every 50 to 100 yards,
+3 The SAS System                                                                                                 16:44 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+     601  suggesting the freight car had been airborne for at least a short distance. While tornado A9 was mov
+     701  ing through southeast Oklahoma City, another tornado (A11) touched down briefly about 1/2 mile south
+     801   of Interstate 240 (Oklahoma County), near the intersection of SE 80th and Sooner Rd. Damage from to
+     901  rnado A11, rated F0, included fences being blown down and minor roof damage inflicted to a couple of
+    1001   houses. Tornado A9 then entered residential neighborhoods between SE 59th and SE 44th where 1 woman
+    1101   was killed in her house. Crossing SE 44th into Del City (Oklahoma County) the tornado moved through
+    1201   the highly populated Del Aire housing addition killing 6 persons and damaging or destroying hundred
+    1301  s of homes, many with F3/F4 damage. The tornado then crossed Sooner Rd., damaged an entry gate and s
+    1401  everal costly structures at Tinker Air Force Base, then crossed 29th St. into Midwest City (Oklahoma
+    1501   County), destroying 1 building in the Boeing Complex and damaging 2 others. Widespread F3/F4 damage
+    1601   continued as the tornado moved across Interstate 40 affecting a large business district. Approximat
+    1701  ely 800 vehicles were damaged at Hudiburg Auto Group, located just south of Interstate 40. Hundreds
+    1801  of the vehicles were moved from their original location, and dozens of vehicles were picked up and t
+    1901  ossed northward across Interstate 40 into several motels, a distance of approximately 2 tenths of a
+    2001  mile. Numerous motels and other businesses including Hampton Inn, Comfort Inn, Inn Suites, Clarion I
+    2101  nn, Cracker Barrel, and portions of Rose State College, were destroyed. Some of the damage through t
+    2201  his area was rated high F4, however low F5 was considered. The tornado then continued into another r
+    2301  esidential area located between SE 15th and Reno Ave. where 3 fatalities occurred. High F4 damage wa
+    2401  s inflicted to 4 homes in this area. Two of these homes were located between SE 12th and SE 11th, ne
+    2501  ar Buena Vista, and the other 2 homes were located on Will Rogers Rd. just south of SE 15th. Damage
+    2601  then diminished rapidly to F0/F1 as the tornado crossed Reno Ave. before dissipating 3 blocks north
+    2701  of Reno Ave. between Sooner Rd. and Air Depot Blvd. 2751
+468428     0
+468429    The Oklahoma State Department of Health in Oklahoma City recorded 36 direct fatalities. In addition,
+     101   5 persons died of illness or accident during or shortly after the tornado and were not considered i
+     201  n the direct fatality total. Five hundred eighty-three injuries were estimated based on numbers prov
+     301  ided from the Department of Health, which were then adjusted to account for persons assumed to be un
+     401  accounted for. Injuries which resulted from removing debris, conducting search and rescue efforts, a
+     501  nd taking shelter from the tornado, were not considered in the injury total. An estimated 1800 homes
+     601   were destroyed, and 2500 homes were damaged, resulting in approximately 1 billion dollars in damage
+     701  .  702
+468430     0
+468431    The 12th tornado, A12, formed about 3 miles southwest of Choctaw in Oklahoma County and produced F2
+     101  damage to two homes and lesser damage to many others in the southwest part of Choctaw. The tornado m
+     201  oved into the center of town where a car was thrown over the canopy at a drive-in-restaurant. The bu
+     301  siness strip located on the north side of NE 23rd was especially affected with several businesses de
+     401  stroyed, including Pizza Hut, Sonic, and Tri-City Youth and Family Shelter. Damage was mainly F1as i
+     501  t moved northeast, except for F2 damage at a nursing home where one woman was injured. The tornado c
+     601  ontinued to weaken in rural areas and dissipated near the intersection of NE 50th and Triple XXX Roa
+     701  d. In total, damage estimates are near 3.2 million dollars, with 8 businesses destroyed, 130 busines
+     801  ses damaged, 14 homes destroyed, and 23 homes damaged. The 13th tornado, A13, formed about 4 miles e
+     901  ast-southeast of Jones in Oklahoma County near the intersection of NE 63rd and Triple XXX Rd., and w
+    1001  as captured on video. Only minor damage (F0), was observed as the tornado tracked northward along Tr
+    1101  iple XXX Rd. for 2 miles before dissipating near Britton. The 14th and final tornado (A14) produced
+    1201  by storm A, formed about 3 miles east-northeast of Jones in Oklahoma County just west of Triple XXX
+    1301  Rd and between Hefner and 122nd, then tracked northward for 4 miles before dissipating near Intersta
+    1401  te 44. A ground survey concluded F1 damage occurred to several homes south of the intersection of Me
+4 The SAS System                                                                                                 16:44 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+    1501  morial and Triple XXX Rd.  1526
+468432     0
+
+===================================================================================================================================
+554711     0
+554712    Green Co: pre-dawn and morning urban/small stream flooding occurred countywide due to rainfall that
+     101  started on May 31st.  The rains ended by sunrise.  Up to 5 inches of rain fell overnight in the sout
+     201  hwest part of the county.  Many streams were 5 to 10 feet wide, resulting in water covering low-lyin
+     301  g roads to a depth of 1 foot.  Several cars were swept into roadside ditches.  Urban basements had m
+     401  inor flood damage.  Additional heavy rains followed the evening squall line which resulted in a new
+     501  round of flash flooding across much of the county.  Eight miles of the 24 mile long Sugar River Stat
+     601  e Trail were closed from near Monticello to near Albany due to washed out bridges and undercut paths
+     701  .  Five homes sustained significant damage.  Numerous roads were closed due to high water levels and
+     801   dozens of vehicles were stranded or pushed into roadside ditches.  Gravel road shoulder and culvert
+     901   washouts were noted countywide.  Water levels in the city of Brodhead were the highest in many year
+    1001  s.  Legion Park in Albany was closed after the adjacent Sugar River exceeded flood stage.  Moderate
+    1101  to severe soil erosion was noted to 5000 acres of farm fields.  The Pecatonica River at Martintown e
+    1201  xceeded the flood stage of 13.5 feet at 0000CST on June 1st, and crested at 18.51 feet on June 4th (
+    1301  moderate flooding). 1319
+554713     0
+554714    Rock Co: powerful thunderstorm winds downed large trees in scattered parts of the county.  However,
+     101  flash-flood producing rains hit during the evening hours. Most mainstem and nearly all streams and c
+     201  reeks jumped their banks. Nine roads along Lake Koshkonong sustained washout damage due to swift wat
+     301  er currents. At least 100 homes outside of the major cities sustained damage.  Many Beloit and Janes
+     401  ville homes in low spots reported landscape flood damage as well as basement flooding. Flash flood w
+     501  aters also tore through farm fields, leaving moderate to severe soil erosion and crop damage to at l
+     601  east 20,000 acres.  Flood waters from the Sugar River in the southwest corner of the county closed r
+     701  oads west of the village of Avon. 733
+554715     0
+554716    Walworth Co: no damage reports. 31
+554717     0
+554718    Kenosha Co: several rounds of heavy rains during the evening on top of previously saturated soils an
+     101  d high river levels resulted in flash flooding scattered across the county.  Several roads had fast-
+     201  flowing waters 1 to 3 feet deep which resulted in shoulder washouts and cars being swept into roadsi
+     301  de ditches.  At least 75 homes sustained significant flood damage in the Wheatland, Salem, and Silve
+     401  r Lake areas.  About 47,000 acres of farm land had serious soil erosion, and washed or flooded crops
+     501  .  Due to rainfall totals during the evening of 2 to 3 inches, the Fox River at New Munster continue
+     601  d to rise and would eventually crest at 12.76 feet early on June 3rd, or 2.76 feet above flood stage
+     701  . Three homes Silver Lake homes were evacuated.",412604.00 758
+554719    55.00,6/1/2000 0:00:00,"04:15:00 PM","CST",111.00,"SAUK","WI","FLASH FLOOD",0.00,,"COUNTYWIDE",6/1/2
+     101  000 0:00:00,"08:00:00 PM",0.00,,0.00,,"COUNTYWIDE",0.00,0.00,,0.00,0.00,0.00,9.25,"M",3.50,"M","MKX"
+     201  ,"WISCONSIN, Southeast",,0.00,0.00,0.00,0.00,"One would be hard pressed to find another day like Jun
+     301  e 1, 2000 in terms of depth and range of severe, convective weather events across south-central and
+     401  southeast Wisconsin.  Tornadoes, widespread and localized flash flooding, funnel clouds, damaging hu
+     501  rricane-force, straight-line winds associated with a wicked squall-line, large hail stones, urban/sm
+     601  all flooding, lightning strikes, and significant mainstem river flooding were reported.  As in the p
+     701  receding weeks, a quasi-stationary front over northern Illinois served as a boundary for warm, moist
+5 The SAS System                                                                                                 16:44 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+     801  , unstable air to be pulled north over the cooler air over Wisconsin.  Leftover flooding (from the e
+     901  vening of May 31, 2000) and isolated severe thunderstorms were noted during the pre-dawn to mid morn
+    1001  ing hours.  However a powerful squall-line formed along the Mississippi River in the La Crosse area
+    1101  by mid-afternoon, and pushed into south-central Wisconsin by late afternoon with ""all hell breaking
+    1201   loose.""   After the squall line moved into the southeast part of the state, it was followed by wid
+    1301  espread showers and thunderstorms that triggered additional flooding problems. The east/southeast mo
+    1401  ving storms would not end until around 2300CST.  As a result of the wild weather events, a State of
+    1501  Emergency was declared in Columbia, Dane, Dodge, Green, Iowa, Lafayette, Rock, and Sauk counties.  N
+    1601  umerous power lines were knocked down by felled trees or wind gusts outright, resulting in the lose
+    1701  of power to 20,000 customers.  Significant storm and flooding events will be summarized below county
+    1801   by county. 1811
+554720     0
+554721    Marquette Co:  6 homes were damaged and trees uprooted by powerful winds estimated at 70 knots (80 m
+     101  ph) in Briggsville. Urban flooding in Briggsville was also noted with water 6 inches deep. 190
+
+
+===================================================================================================================================
+690308    34.00,12/17/2003 0:00:00,"01:08:00 PM","EST",10.00,"NJZ010","NJ","FLOOD",0.00,,,12/18/2003 0:00:00,"
+     101  06:55:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,,0.00,,"PHI","NEW JERSEY, South and Northwe
+     201  st","SOMERSET - SOMERSET",0.00,0.00,0.00,0.00,"The combination of the already saturated soil and hea
+     301  vy rain around noon EST on the 17th caused poor drainage flooding and flooding along parts of the Mi
+     401  llstone River in New Castle County. The Millstone River in Griggstown was above its 10 foot flood st
+     501  age from 108 p.m. EST on the 17th through 655 p.m. EST on the 18th. It crested at 11.44 feet at 2 a.
+     601  m. EST on the 18th.  Storm totals included 0.72 inches in Somerville and 0.70 inches in Bound Brook.
+     701   The heavy rain preceded and accompanied an occluded frontal passage during the day on the 17th. Moi
+     801  sture from the Gulf of Mexico was entrained into this frontal system as it moved through Delaware.
+     901  ",506903.00 911
+690309    34.00,12/24/2003 0:00:00,"07:00:00 AM","EST",14.00,"NJZ014 - 023>026","NJ","ASTRONOMICAL HIGH TIDE",
+     101  0.00,,,12/24/2003 0:00:00,"11:00:00 AM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,,0.00,,"PHI","NE
+     201  W JERSEY, South and Northwest","EASTERN MONMOUTH - EASTERN MONMOUTH - WESTERN CAPE MAY - EASTERN CAP
+     301  E MAY - EASTERN ATLANTIC - EASTERN OCEAN",0.00,0.00,0.00,0.00,"The combination of spring astronomica
+     401  l tides because of the recent new moon and  a south to southeast flow caused areas of minor tidal fl
+     501  ooding during the morning high tide on the 24th. The tidal flooding exacerbated the ongoing poor dra
+     601  inage flooding along coastal areas as the heavy rain in many places coincided with the high tide. Th
+     701  e highest reported tide in Sandy Hook (Monmouth County) was 6.83 feet above mean lower low water and
+     801   in Cape May (Cape May County) was 7.03 feet. Minor tidal flooding starts at 6.70 feet above mean lo
+     901  wer low water. ",506904.00 926
+690310    34.00,12/24/2003 0:00:00,"10:14:00 AM","EST",18.00,"NJZ018","NJ","FLOOD",0.00,,,12/24/2003 0:00:00,"
+     101  04:30:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,,0.00,,"PHI","NEW JERSEY, South and Northwe
+     201  st","CAMDEN - CAMDEN",0.00,0.00,0.00,0.00,"A slow moving cold front with weak waves of low pressure
+     301  riding along it produced heavy rain during the first half of the day on the 24th. In addition to the
+     401   poor drainage flooding, flooding occurred along the Cooper River. The Cooper River at Haddonfield w
+     501  as above its 2.8 foot flood stage from 1014 a.m. EST through 430 p.m. EST on the 24th. It crested at
+     601   2.93 feet at 1215 p.m. EST. Storm totals included 2.82 inches in Pennsauken and 2.01 inches in Some
+     701  rdale. The frontal system responsible for the heavy rain moved from the central Ohio Valley during t
+     801  he afternoon of the 23rd to central Pennsylvania during the morning of the 24th to just east of the
+     901  New Jersey coast during the early evening of the 24th. The heavy rain preceded and accompanied the c
+6 The SAS System                                                                                                 16:44 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+    1001  old frontal passage.  1021
+690311     0
+690312    December 2003 was unseasonably wet as was all of 2003. On a statewide average, 2003 was the fifth we
+     101  ttest year on record in New Jersey  with a preliminary average of 57.45 inches, 10.26 inches wetter
+     201  than normal. In New Jersey yearly precipitation totals included 43.13 inches in Trenton (Mercer Coun
+     301  ty) and 48.36 inches at the Atlantic City International Airport. ",506905.00 376
+690313    34.00,12/24/2003 0:00:00,"11:32:00 AM","EST",10.00,"NJZ010","NJ","FLOOD",0.00,,,12/26/2003 0:00:00,"
+     101  11:38:00 AM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,,0.00,,"PHI","NEW JERSEY, South and Northwe
+     201  st","SOMERSET - SOMERSET",0.00,0.00,0.00,0.00,"A slow moving cold front with weak waves of low press
+     301  ure riding along it produced heavy rain during the first half of the day on the 24th. In addition to
+     401   the poor drainage flooding, flooding occurred along sections of the Raritan and Millstone Rivers. T
+     501  he North Branch of the Raritan River at South Branch was above its 6.9 foot flood stage from 1211 p.
+     601  m. through 753 p.m. EST on the 24th. It crested at 7.7 feet at 100 p.m. EST on the 24th. The Millsto
+     701  ne River at Griggstown was above its 10 foot flood stage from 1132 a.m. EST on the 24th through 1138
+     801   a.m. EST on the 26th. Farther downstream, the Millstone River at Blackwells Mills was above its 9 f
+     901  oot flood stage from 445 a.m. through 945 a.m. EST on the 25th. It crested at 9.09 feet at 645 a.m.
+    1001  EST. It crested at 15.05 feet at 230 a.m. EST on the 25th. Storm totals included 1.85 inches in Some
+    1101  rville, 1.70 inches in Bound Brook and 1.50 inches in North Plainfield. The frontal system responsib
+    1201  le for the heavy rain moved from the central Ohio Valley during the afternoon of the 23rd to central
+    1301   Pennsylvania during the morning of the 24th to just east of the New Jersey coast during the early e
+    1401  vening of the 24th. The heavy rain preceded and accompanied the cold frontal passage.  1486
+690314     0
+690315    December 2003 was unseasonably wet as was all of 2003. On a statewide average, 2003 was the fifth we
+     101  ttest year on record in New Jersey  with a preliminary average of 57.45 inches, 10.26 inches wetter
+     201  than normal. In New Jersey yearly precipitation totals included 43.13 inches in Trenton (Mercer Coun
+     301  ty) and 48.36 inches at the Atlantic City International Airport. ",506906.00 376
+690316    34.00,12/24/2003 0:00:00,"12:00:00 PM","EST",17.00,"NJZ017>019","NJ","ASTRONOMICAL HIGH TIDE",0.00,,
+     101  ,12/24/2003 0:00:00,"05:00:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,,0.00,,"PHI","NEW JERS
+     201  EY, South and Northwest","GLOUCESTER - GLOUCESTER - CAMDEN - NORTHWESTERN BURLINGTON",0.00,0.00,0.00
+     301  ,0.00,"The combination of spring astronomical tides because of the recent new moon, a south to south
+     401  east flow into Delaware Bay and the Delaware River and runoff from heavy rain during the morning cau
+     501  sed minor tidal flooding along the Delaware River and tidal sections of its tributaries during the a
+     601  fternoon of the 24th. The high tide on the Delaware River in Burlington City reached 9.99 feet above
+     701   mean lower low water. Minor tidal flooding begins at 9.0 feet above mean lower low water. The high
+     801  tide on the Delaware River in Philadelphia reached 8.45 feet above mean lower low water. Minor tidal
+     901   flooding starts at 8.2 feet above mean lower low water. ",506907.00 968
+690317    34.00,12/24/2003 0:00:00,"12:25:00 PM","EST",3.00,"NJZ003 - 003","NJ","FLOOD",0.00,,,12/25/2003 0:00
+     101  :00,"05:00:00 AM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,,0.00,,"OKX","NEW JERSEY, Northeast","
+     201  BERGEN - BERGEN - BERGEN",0.00,0.00,0.00,0.00," 247
+690318    As a wave of low pressure moved northeast toward the region, a 1 1/2 to 2 1/2 inch heavy rainfall re
+     101  sulted in widespread flooding of rivers, streams, and urban areas including low lying and poor drain
+     201  age areas. 210
+
+
+===================================================================================================================================
+936848    of large hail, with a few occurrences of wind damage.",692619.00 64
+936849    5.00,3/14/2008 0:00:00,"20:30:00 PM","CST",11.00,"BRADLEY","AR","HAIL",7.00,"S","VICK",3/14/2008 0:0
+7 The SAS System                                                                                                 16:44 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+     101  0:00,"20:30:00 PM",0.00,,0.00,,,0.00,0.00,,75.00,0.00,0.00,0.00,"K",0.00,"K","LZK","ARKANSAS, Centra
+     201  l and North Central","
+     301
+     401                        ",3313.00,9207.00,0.00,0.00,"EVENT NARRATIVE: Penny sized hail fell in Felsent
+     501  hal National Wildlife Refuge. EPISODE NARRATIVE: A storm system was in the Texas Panhandle during th
+     601  e early evening of the 14th. At the same time, a warm front lifted to the north ahead of the system.
+     701   Strong to severe thunderstorms developed along and north of the front.",692620.00 782
+936850    5.00,3/14/2008 0:00:00,"20:34:00 PM","CST",99.00,"NEVADA","AR","FUNNEL CLOUD",2.00,"WNW","WILLISVILL
+     101  E",3/14/2008 0:00:00,"20:34:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,"K",0.00,"K","SHV","A
+     201  RKANSAS, Southwest","
+     301
+     401                       ",3331.00,9320.00,0.00,0.00,"EVENT NARRATIVE: Funnel cloud reported between the
+     501   communities of Willisville and Bodcaw, Arkansas. EPISODE NARRATIVE: About 3 to 4 supercells formed
+     601  in a moist and unstable air mass in  636
+936851    southwest Arkansas and north Louisiana ahead of a surface dry line  67
+936852    located over northeast Texas.  The supercells produced several episodes  72
+936853    of large hail, with a few occurrences of wind damage.",692621.00 64
+936854    5.00,3/14/2008 0:00:00,"20:40:00 PM","CST",43.00,"DREW","AR","HAIL",0.00,"SW","VALLEY FARM",3/14/200
+     101  8 0:00:00,"20:40:00 PM",0.00,,0.00,,,0.00,0.00,,75.00,0.00,0.00,0.00,"K",0.00,"K","LZK","ARKANSAS, C
+     201  entral and North Central","
+     301
+     401                             ",3346.00,9134.00,0.00,0.00,"EPISODE NARRATIVE: A storm system was in the
+     501   Texas Panhandle during the early evening of the 14th. At the same time, a warm front lifted to the
+     601  north ahead of the system. Strong to severe thunderstorms developed along and north of the front.",6
+     701  92622.00 708
+936855    5.00,3/14/2008 0:00:00,"20:49:00 PM","CST",3.00,"ASHLEY","AR","HAIL",6.00,"WNW","SULPHUR SPGS",3/14/
+     101  2008 0:00:00,"21:37:00 PM",0.00,,6.00,"WSW","WILMOT",0.00,0.00,,175.00,0.00,0.00,100.00,"K",0.00,"K"
+     201  ,"JAN","ARKANSAS, Southeast","
+     301
+     401                                ",3307.00,9207.00,3301.00,9140.00,"EVENT NARRATIVE: Another large supe
+     501  rcell thunderstorm moved into southwest Ashley County at Lake Jack Lee. However, this supercell was
+     601  moving to the southeast and tracked for nearly 45 minutes across the southern portion of Ashley Coun
+     701  ty. A swath of quarter to golf ball sized hail fell with this supercell as well. The storm weakened
+     801  as it approached Wilmot. EPISODE NARRATIVE: A weak front stalled across the northern portion of the
+     901  area earlier in the day and provided a focus for thunderstorms to develop by evening. Conditions by
+    1001  afternoon became warm and quite unstable near the front. Several large supercell thunderstorms devel
+    1101  oped across southern Arkansas and northern Louisiana and tracked east toward the Mississippi River a
+    1201  nd then across central sections of Mississippi. These storms were prolific hail producers and produc
+    1301  ed large swaths of quarter to golf ball sized hail. The largest hail was around baseball size which
+    1401  occurred across northeast Louisiana. All the severe weather occurred between 9 pm and 1 am.",692623.
+    1501  00 1502
+936856    5.00,3/14/2008 0:00:00,"20:50:00 PM","CST",139.00,"UNION","AR","HAIL",2.00,"NNE","EL DORADO",3/14/20
+     101  08 0:00:00,"20:50:00 PM",0.00,,0.00,,,0.00,0.00,,75.00,0.00,0.00,0.00,"K",0.00,"K","SHV","ARKANSAS,
+     201  Southwest","
+     301
+     401              ",3313.00,9239.00,0.00,0.00,"EVENT NARRATIVE: Penny sized hail in downtown. EPISODE NARR
+     501  ATIVE: About 3 to 4 supercells formed in a moist and unstable air mass in  574
+8 The SAS System                                                                                                 16:44 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+936857    southwest Arkansas and north Louisiana ahead of a surface dry line  67
+936858    located over northeast Texas.  The supercells produced several episodes  72
+
+
+===================================================================================================================================
+986156    38.00,11/6/2008 0:00:00,"03:00:00 AM","CST",33.00,"NDZ033 - 042","ND","BLIZZARD",0.00,,,11/7/2008 0:
+     101  00:00,"10:30:00 AM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,"K",0.00,"K","BIS","NORTH DAKOTA, Ce
+     201  ntral and West","STARK - STARK - GRANT",0.00,0.00,0.00,0.00,"EVENT NARRATIVE: Six to ten inches of t
+     301  otal snowfall was reported by Thursday afternoon across Stark County, with the heaviest snow amounts
+     401   over central and eastern parts of the county. Richardton reported an estimate of eight inches of sn
+     501  ow. Sustained wind speeds of 30 to 45 mph, and gusts up to near 55 mph, combined with the snow Wedne
+     601  sday evening through Thursday night to create widespread and prolonged blizzard conditions. Roads we
+     701  re closed or no travel was advised due to these conditions. Interstate 94 was closed from Dickinson
+     801  to Bismarck late Thursday afternoon through Thursday night. EPISODE NARRATIVE: A significant and com
+     901  plex winter storm impacted much of western and central North Dakota beginning Wednesday, November 5t
+    1001  h, and lasting into Friday, November 7th. Winter storm warnings and blizzard warnings were posted we
+    1101  ll in advance of the storm. Warning lead time averaged nearly 27 hours. The warnings encompassed the
+    1201   entire National Weather Service Bismarck County Warning Area, 36 counties, though not all counties
+    1301  had events or reached warning criteria. Counties in the Williston area and the Jamestown area were b
+    1401  asically missed by the storm. 1429
+986157     0
+986158    Blizzard conditions, or significant snow with near blizzard conditions, forced many schools and busi
+     101  nesses to close and stranded travelers. Numerous roads were closed or no travel was advised due to t
+     201  he conditions.  In addition, numerous power outages were reported across central North Dakota due to
+     301   a wintry mix of rain, freezing rain, and sleet that fell Wednesday night and early Thursday morning
+     401  , preceding the stronger winds and change over to heavy snow. 461
+986159     0
+986160    On November third and fourth, an open wave upper level trough moving east across the central Rocky M
+     101  ountains became a closed upper level low pressure system, and triggered lee-side cyclogenisis across
+     201   the high plains of Wyoming. By Wednesday morning and afternoon, November fifth, the surface low mov
+     301  ed into central and eastern parts of South Dakota, with a TROWAL (trough of warm air aloft) feature
+     401  developing across the northern plains, along with plenty of moisture advection from the Gulf of Mexi
+     501  co. Warm air advection ahead of the surface low wrapped around into western and central North Dakota
+     601  , producing moderate to heavy rain Wednesday, setting daily rainfall records. An addition, scattered
+     701   thunderstorms in east-central North Dakota prompted one severe thunderstorm warning and yielded a r
+     801  eport of large hail in Stutsman County. Farther west, rain quickly changed over to all snow Wednesda
+     901  y evening as colder air was pulled into the system. 951
+986161     0
+986162    Moderate to heavy snow continued across western North Dakota Wednesday night into Thursday morning,
+     101  coinciding with increasing northwesterly winds which produced widespread blizzard conditions over th
+     201  e southwest part of the state. A band of thundersleet developed early Thursday morning over central
+     301  areas. Later Thursday morning the storm system's dry slot worked into the Bismarck area cutting off
+     401  precipitation altogether, at least temporarily. 447
+986163     0
+986164    By daybreak Thursday morning, as the initial TROWAL feature was dissipating across western North Dak
+     101  ota, a secondary TROWAL developed over southern Alberta and advancing south into north central North
+     201   Dakota. Colder air aloft had also advected across the entire area by mid morning Thursday. By early
+9 The SAS System                                                                                                 16:44 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0
+     301   Thursday afternoon, this secondary TROWAL continued to advance south, producing a band of heavy sno
+     401  w which lasted through Thursday night, and finally decreased Friday morning. 476
+986165     0
+986166    Additionally, strong north to northwest winds accompanying the snow produced widespread blizzard con
+     101  ditions central, with blizzard conditions continuing southwest due to the strong winds and existing
+     201  heavy snow cover. 217
+
+
+===================================================================================================================================
+NOTE: 986167 records were read from the infile IN.
+      The minimum record length was 0.
+      The maximum record length was 10889.
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
