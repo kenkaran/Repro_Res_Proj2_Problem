@@ -1,0 +1,69 @@
+1 The SAS System                                                                                    19:41 Monday, June 15, 2015
+
+NOTE: Copyright (c) 2002-2008 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.2 (TS2M0) 
+      Licensed to VISITING NURSE SERVICE OF NEW YORK, Site 70059519.
+NOTE: This session is executing on the X64_SRV  platform.
+
+
+
+
+NOTE: AUTOEXEC processing beginning; file is E:\USERS\OUTCOMES\Ken_K\SAS Utility Files\KenAutoSas.sas.
+
+Note: Program file is E:\USERS\OUTCOMES\Ken_K\Other\SAS KB 26065.sas.
+
+NOTE: AUTOEXEC processing completed.
+
+1          /************************** CAUTION ***************************/
+2          /*                                                            */
+3          /* This program UPDATES IN PLACE, create a backup copy before */
+4          /* running.                                                   */
+5          /*                                                            */
+6          /************************** CAUTION ***************************/
+7          
+8          /* Replace carriage return and linefeed characters inside     */
+9          /* double quotes with a specified character.  This sample     */
+10         /* uses '@' and '$', but any character can be used, including */
+11         /* spaces.  CR/LFs not in double quotes will not be replaced. */
+12         
+13         
+14         %let repA='@';                    /* replacement character LF */
+15         %let repD='$';                    /* replacement character CR */
+16         %let dsnnme="repdata_data_StormData_fixed.csv";  /* use full path of CSV file */
+17         
+18         data _null_;
+19             /* RECFM=N reads the file in binary format. The file consists    */
+20             /* of a stream of bytes with no record boundaries.  SHAREBUFFERS */
+21             /* specifies that the FILE statement and the INFILE statement    */
+22             /* share the same buffer.                                        */
+23             infile &dsnnme recfm=n sharebuffers;
+24             file &dsnnme recfm=n;
+25         
+26             /* OPEN is a flag variable used to determine if the CR/LF is within */
+27             /* double quotes or not.  Retain this value.                        */
+28             retain open 0;
+29         
+30             input a $char1.;
+31             /* If the character is a double quote, set OPEN to its opposite value. */
+32             if a = '"' then open = ^(open);
+33         
+34             /* If the CR or LF is after an open double quote, replace the byte with */
+2 The SAS System                                                                                                 19:41 Monday, June 15, 2015
+
+35             /* the appropriate value.                                               */
+36             if open then do;
+37                 if a = '0D'x then put &repD;
+38                 else if a = '0A'x then put &repA;
+39                 end;
+40             run;
+
+NOTE: UNBUFFERED is the default with RECFM=N.
+NOTE: The file/infile "repdata_data_StormData_fixed.csv" is:
+      Filename=E:\USERS\OUTCOMES\Ken_K\Other\repdata_data_StormData_fixed.csv,
+      RECFM=N,LRECL=256,File Size (bytes)=561637449,
+      Last Modified=15Jun2015:10:23:20,
+      Create Time=15Jun2015:19:36:36
+
+NOTE: UNBUFFERED is the default with RECFM=N.
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
