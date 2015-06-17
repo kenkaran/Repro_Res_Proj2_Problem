@@ -1,0 +1,744 @@
+1 The SAS System                                                                                    19:58 Monday, June 15, 2015
+
+NOTE: Copyright (c) 2002-2008 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.2 (TS2M0) 
+      Licensed to VISITING NURSE SERVICE OF NEW YORK, Site 70059519.
+NOTE: This session is executing on the X64_SRV  platform.
+
+
+
+
+NOTE: AUTOEXEC processing beginning; file is E:\USERS\OUTCOMES\Ken_K\SAS Utility Files\KenAutoSas.sas.
+
+Note: Program file is E:\USERS\OUTCOMES\Ken_K\Other\Read Storm Data.sas.
+
+NOTE: AUTOEXEC processing completed.
+
+1          
+2          /* max lrecl = 1073741823 */
+3          
+4          filename in 'repdata_data_StormData_fixed.csv' lrecl=16384;
+5          libname out '.';
+NOTE: Libref OUT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: E:\USERS\OUTCOMES\Ken_K\Other
+6          run;
+7          
+8          data Storm_Bloated (drop=_:);
+9              retain _intvl 0;
+10             infile in dlm=',' dsd firstobs=2 end=fin;
+11             length
+12                 state
+13                 bgn_date
+14                 bgn_time
+15                 time_zone
+16                 county
+17                 countyname
+18                 state
+19                 evtype
+20                 bgn_range
+21                 bgn_azi
+22                 bgn_locati
+23                 end_date
+24                 end_time
+25                 county_end
+26                 countyendn
+27                 end_range
+28                 end_azi
+29                 end_location
+30                 len
+31                 wid
+2 The SAS System                                                                                                 19:58 Monday, June 15, 2015
+
+32                 f
+33                 mag
+34                 fatalities
+35                 injuries
+36                 propdmg
+37                 propdmgexp
+38                 cropdmg
+39                 cropdmgexp
+40                 wfo
+41                 stateoffic
+42                 zonenames
+43                 latitude
+44                 longitude
+45                 latitude
+46                 longitude $ 50
+47                 remarks   $ 1000
+48                 refnum    $ 50
+49                 ;
+50             input
+51                 state          $
+52                 bgn_date       $
+53                 bgn_time       $
+54                 time_zone      $
+55                 county         $
+56                 countyname     $
+57                 state          $
+58                 evtype         $
+59                 bgn_range      $
+60                 bgn_azi        $
+61                 bgn_locati     $
+62                 end_date       $
+63                 end_time       $
+64                 county_end     $
+65                 countyendn     $
+66                 end_range      $
+67                 end_azi        $
+68                 end_location   $
+69                 len            $
+70                 wid            $
+71                 f              $
+72                 mag            $
+73                 fatalities     $
+74                 injuries       $
+75                 propdmg        $
+76                 propdmgexp     $
+77                 cropdmg        $
+78                 cropdmgexp     $
+79                 wfo            $
+3 The SAS System                                                                                                 19:58 Monday, June 15, 2015
+
+80                 stateoffic     $
+81                 zonenames      $
+82                 latitude       $
+83                 longitude      $
+84                 latitude       $
+85                 longitude      $
+86                 remarks        $
+87                 refnum         $
+88                 ;
+89             if _n_ = 1 then _intvl = floor(1232705 / 100);
+90             if mod(_n_, _intvl) = 0 then list;
+91             run;
+
+NOTE: The infile IN is:
+      Filename=E:\USERS\OUTCOMES\Ken_K\Other\repdata_data_StormData_fixed.csv,
+      RECFM=V,LRECL=16384,
+      File Size (bytes)=561637449,
+      Last Modified=15Jun2015:19:53:35,
+      Create Time=15Jun2015:19:36:36
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0                              
+12328     6.00,1/10/1958 0:00:00,"0445","CST",15.00,"DEL NORTE","CA","TORNADO",0.00,,,,,0.00,,0.00,,,0.80,60.0
+     101  0,"0",0.00,0.00,0.00,0.00,"K",0.00,,,,,4145.00,12412.00,0.00,0.00,,12327.00 175
+24655     13.00,5/3/1984 0:00:00,"1245","CST",61.00,"CLAY","GA","TSTM WIND",0.00,,,,,0.00,,0.00,,,0.00,0.00,,0
+     101  .00,0.00,0.00,0.00,,0.00,,"ATA",,,3137.00,8500.00,0.00,0.00,,24654.00 169
+36982     18.00,3/31/1982 0:00:00,"0810","CST",97.00,"MARION","IN","HAIL",0.00,,,,,0.00,,0.00,,,0.00,0.00,,100
+     101  .00,0.00,0.00,0.00,,0.00,,"NG",,,3947.00,8609.00,0.00,0.00,,36981.00 168
+49309     20.00,5/13/1970 0:00:00,"0155","CST",0.00,,"KS","TSTM WIND",0.00,,,,,0.00,,0.00,,,0.00,0.00,,50.00,0
+     101  .00,0.00,0.00,,0.00,,,,,3853.00,9435.00,0.00,0.00,,49308.00 159
+61636     22.00,2/21/1974 0:00:00,"1545","CST",103.00,"ST. TAMMANY","LA","TSTM WIND",0.00,,,,,0.00,,0.00,,,0.0
+     101  0,0.00,,0.00,0.00,0.00,0.00,,0.00,,,,,3016.00,8947.00,0.00,0.00,,61635.00 173
+73963     27.00,6/12/1970 0:00:00,"1835","CST",11.00,"BIG STONE","MN","TSTM WIND",0.00,,,,,0.00,,0.00,,,0.00,0
+     101  .00,,0.00,0.00,0.00,0.00,,0.00,,,,,4512.00,9611.00,0.00,0.00,,73962.00 170
+86290     29.00,7/3/1974 0:00:00,"1848","CST",75.00,"GENTRY","MO","TSTM WIND",0.00,,,,,0.00,,0.00,,,0.00,0.00,
+     101  ,0.00,0.00,0.00,0.00,,0.00,,,,,4004.00,9430.00,0.00,0.00,,86289.00 166
+98617     31.00,9/5/1986 0:00:00,"2000","CST",181.00,"WEBSTER","NE","TORNADO",0.00,,,,,0.00,,0.00,,,0.20,50.00
+     101  ,"1",0.00,0.00,0.00,0.03,"K",0.00,,,,,4015.00,9832.00,0.00,0.00,,98616.00 173
+110944    37.00,9/10/1990 0:00:00,"1700","CST",167.00,"STANLY","NC","HAIL",0.00,,,,,0.00,,0.00,,,0.00,0.00,,75
+     101  .00,0.00,0.00,0.00,,0.00,,"CLT",,,3527.00,8014.00,0.00,0.00,,110943.00 170
+123271    40.00,4/16/1969 0:00:00,"1530","CST",33.00,"COTTON","OK","HAIL",0.00,,,,,0.00,,0.00,,,0.00,0.00,,125
+     101  .00,0.00,0.00,0.00,,0.00,,,,,3417.00,9817.00,0.00,0.00,,123270.00 165
+135598    42.00,5/22/1983 0:00:00,"1247","CST",63.00,"INDIANA","PA","TORNADO",0.00,,,,,0.00,,0.00,,,6.00,200.0
+     101  0,"2",0.00,0.00,0.00,2.50,"M",0.00,,,,,4027.00,7917.00,4030.00,7911.00,,135597.00 181
+147925    47.00,7/25/1986 0:00:00,"1145","CST",153.00,"SEQUATCHIE","TN","TSTM WIND",0.00,,,,,0.00,,0.00,,,0.00
+     101  ,0.00,,0.00,0.00,0.00,0.00,,0.00,,"MEM",,,3528.00,8528.00,0.00,0.00,,147924.00 178
+160252    48.00,5/11/1982 0:00:00,"1900","CST",349.00,"NAVARRO","TX","TORNADO",0.00,,,,,0.00,,0.00,,,0.20,7.00
+     101  ,"1",0.00,0.00,0.00,0.03,"K",0.00,,,,,3206.00,9638.00,0.00,0.00,,160251.00 174
+172579    50.00,7/4/1990 0:00:00,"2145","CST",23.00,"WASHINGTON","VT","TSTM WIND",0.00,,,,,0.00,,0.00,,,0.00,0
+4 The SAS System                                                                                                 19:58 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0                              
+     101  .00,,0.00,0.00,0.00,0.00,,0.00,,"BTV",,,4407.00,7251.00,0.00,0.00,,172578.00 176
+184906    40.00,6/19/1992 0:00:00,"2110","CST",119.00,"PAYNE","OK","HAIL",0.00,,,,,0.00,,0.00,,,0.00,0.00,,175
+     101  .00,0.00,0.00,0.00,,0.00,,"OKC",,,3614.00,9656.00,0.00,0.00,,184905.00 170
+197233    13.00,6/9/1994 0:00:00,"1530","EST",193.00,"MACON","GA","THUNDERSTORM WINDS",0.00,,"Montezuma",,,0.0
+     101  0,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.50,"K",0.00,,,,,0.00,0.00,0.00,0.00,"A few large trees and pow
+     201  er lines were downed by thunderstorm  winds. ",197154.00 256
+209560    26.00,7/31/1995 0:00:00,"2036","EST",89.00,"LEELANAU","MI","THUNDERSTORM WINDS",1.00,"N","Empire",,,
+     101  0.00,,0.00,,,0.00,0.00,,50.00,0.00,0.00,2.00,"K",0.00,,,,,0.00,0.00,0.00,0.00,"Large tree limbs and 
+     201  power lines were downed by the wind at both locations. ",209559.00 266
+221887    38.00,6/12/1994 0:00:00,"1445","CST",101.00,"WARD","ND","TORNADO",0.00,,"near Minot",,,0.00,,0.00,,,
+     101  0.10,10.00,"0",0.00,0.00,0.00,0.00,,0.00,,,,,4814.00,10117.00,0.00,0.00,"  ",221846.00 186
+234214    47.00,5/14/1995 0:00:00,"0812","CST",65.00,"HAMILTON","TN","HAIL",0.00,,"Chattanooga",,,0.00,,0.00,,
+     101  ,0.00,0.00,,175.00,0.00,0.00,5.00,"K",0.00,,,,,0.00,0.00,0.00,0.00,"  ",234200.00 181
+246541    54.00,10/5/1995 0:00:00,"1200","EST",77.00,"PRESTON","WV","HIGH WINDS",0.00,,,,,0.00,,0.00,,,0.00,0.
+     101  00,,0.00,0.00,0.00,1.00,"K",0.00,,,,,0.00,0.00,0.00,0.00,"Large limbs were downed by high wind acros
+     201  s the county as the remnants of what was once Hurricane Opal moved north through the area. ",246448.
+     301  00 302
+258868    21.00,4/20/1996 0:00:00,"02:00:00 AM","EST",211.00,"SHELBY","KY","TSTM WIND",1.00,"S","FINCHVILLE",4
+     101  /20/1996 0:00:00,"02:00:00 AM",0.00,,1.00,"S","FINCHVILLE",0.00,0.00,,69.00,0.00,0.00,30.00,"K",0.00
+     201  ,,"LMK","KENTUCKY, Central",,3808.00,8519.00,3808.00,8519.00,"A house and a several farming building
+     301  s were damaged due to straight-line winds.",258826.00 353
+271195    40.00,9/26/1996 0:00:00,"08:00:00 AM","CST",145.00,"WAGONER","OK","FLASH FLOOD",2.50,"E","BROKEN ARR
+     101  OW",9/26/1996 0:00:00,"08:30:00 AM",0.00,,2.50,"E","BROKEN ARROW",0.00,0.00,,0.00,0.00,0.00,0.00,,0.
+     201  00,,"TSA","OKLAHOMA, Eastern",,0.00,0.00,0.00,0.00,,271194.00 261
+283522    8.00,6/13/1997 0:00:00,"05:30:00 PM","MST",39.00,"ELBERT","CO","TORNADO",5.00,"SW","MATHESON",6/13/1
+     101  997 0:00:00,"06:00:00 PM",0.00,,10.00,"SW","MATHESON",5.00,100.00,"0",0.00,0.00,0.00,0.00,,0.00,,"BO
+     201  U","COLORADO, Central and Northeast",,3907.00,10403.00,3904.00,10407.00,"A multi-vortex tornado touc
+     301  hed down.  The path length and width of the storm was approximated.$$",283521.00 380
+295849    31.00,8/22/1997 0:00:00,"05:25:00 PM","CST",171.00,"THOMAS","NE","HAIL",9.00,"SW","THEDFORD",8/22/19
+     101  97 0:00:00,"05:25:00 PM",0.00,,9.00,"SW","THEDFORD",0.00,0.00,,100.00,0.00,0.00,0.00,,0.00,,"LBF","N
+     201  EBRASKA, Central",,4153.00,10042.00,4153.00,10042.00,,295828.00 263
+308176    53.00,5/31/1997 0:00:00,"02:15:00 PM","PST",53.00,"PIERCE","WA","TORNADO",0.00,,"TACOMA",5/31/1997 0
+     101  :00:00,"02:19:00 PM",0.00,,0.00,,"TACOMA",0.50,0.00,"1",0.00,0.00,0.00,150.00,"K",0.00,,"SEW","WASHI
+     201  NGTON, Northwest",,4714.00,12227.00,4714.00,12227.00,"A weak tornado touched down in a south Tacoma 
+     301  neighborhood just east of I-5.  A church suffered roof and beam damage and several trees were pushed
+     401   over or snapped off.  There were also some downed fences. $$",308145.00 472
+320503    20.00,3/30/1998 0:00:00,"02:38:00 PM","CST",45.00,"DOUGLAS","KS","HAIL",2.00,"W","LAWRENCE",3/30/199
+     101  8 0:00:00,"02:38:00 PM",0.00,,2.00,"W","LAWRENCE",0.00,0.00,,75.00,0.00,0.00,0.00,,0.00,,"TOP","KANS
+     201  AS, East",,3858.00,9516.00,3858.00,9516.00,,320502.00 253
+332830    37.00,4/3/1998 0:00:00,"11:20:00 PM","EST",141.00,"PENDER","NC","HAIL",0.00,,"BURGAW",4/3/1998 0:00:
+     101  00,"11:22:00 PM",0.00,,0.00,,"BURGAW",0.00,0.00,,75.00,0.00,0.00,0.00,,0.00,,"ILM","NORTH CAROLINA, 
+     201  South Coastal",,3433.00,7756.00,3433.00,7756.00,"Reported by Skywarn Spotter 3 W of Burgaw$",332790.
+     301  00 302
+345157    51.00,3/20/1998 0:00:00,"03:56:00 PM","EST",89.00,"HENRY","VA","TORNADO",2.00,"W","SANDY LEVEL",3/20
+     101  /1998 0:00:00,"04:04:00 PM",0.00,,3.00,"NNE","SANDY LEVEL",4.00,150.00,"1",0.00,0.00,0.00,200.00,"K"
+     201  ,0.00,,"RNK","VIRGINIA, Southwest",,3634.00,7945.00,3636.00,7942.00,"Thunderstorms during the late m
+     301  orning and afternoon hours produced a tornado, flash flooding, hail up to golfball size, and damagin
+5 The SAS System                                                                                                 19:58 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0                              
+     401  g winds.$@$@From the same storm that produced two tornadoes in North Carolina, a tornado formed abou
+     501  t 2 miles west of Sandy Level in extreme southeastern Henry County and travelled northeast about 11 
+     601  miles before dissipating about 2 miles west of Whitmell in Pittsylvania County. This tornado was gen
+     701  erally from 100 to 200 yards wide, with damage in some areas up to 350 yards wide. This tornado dama
+     801  ged or destroyed several vehicles, barns, and outbuildings, and more than 60 residences, damaged two
+     901   churches, and toppled trees and power lines. Some of the fallen trees blocked roads for a period of
+    1001   time.  $@$@Just before the tornado formed, trees and power lines were knocked down and large branch
+    1101  es of trees were snapped off from the North Carolina border 3 miles west southwest of Sandy Level to
+    1201   2 miles west of Sandy Level.$@$@Heavy rainfall resulted in the flooding of a creek near the Virgini
+    1301  a Tech Airport, flooding of Sinking Creek near route 460 about 5 miles east southeast of Pembroke, f
+    1401  looded routes 252 and 606 about 2 miles northeast of Brownsburg, and resulted in the closing of rout
+    1501  e 11 at two locations about two miles north of Shawsville.$@$@The flooding of several creeks and str
+    1601  eams in southwest Roanoke City, resulting in road closings and the flooding of several vehicles, a f
+    1701  ew residences, and two businesses. A portion of the first floor of a hotel was flooded.$@$@In Bedfor
+    1801  d County, West Fork Creek flooded route 24 about a mile east of Stewartsville and several roads in a
+    1901  nd near Montvale were flooded.$@$@In Pulaski County, Peak Creek flooded a road in Pulaski.",345136.0
+    2001  0 2001
+357484    20.00,6/8/1999 0:00:00,"10:23:00 PM","CST",189.00,"STEVENS","KS","HAIL",7.00,"SE","HUGOTON",6/8/1999
+     101   0:00:00,"10:23:00 PM",0.00,,7.00,"SE","HUGOTON",0.00,0.00,,88.00,0.00,0.00,0.00,,0.00,,"DDC","KANSA
+     201  S, Southwest",,3707.00,10116.00,3707.00,10116.00,,357450.00 259
+369811    40.00,6/30/1999 0:00:00,"06:00:00 PM","CST",69.00,"OKZ069","OK","FLOOD",0.00,,,6/30/1999 0:00:00,"11
+     101  :59:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,,0.00,,"TSA","OKLAHOMA, Eastern","ADAIR - ADA
+     201  IR",0.00,0.00,0.00,0.00,"The Illionois River at Watts rose above its flood stage of 13 feet at 700 P
+     301  M CDT on June 30.  The river continued to rise at the close of June.  For crest information, refer t
+     401  o the July 1999 Storm Data.",369791.00 438
+382138    6.00,12/2/2000 0:00:00,"06:30:00 AM","PST",71.00,"CAZ071","CA","FOG",0.00,,,12/2/2000 0:00:00,"07:30
+     101  :00 AM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,,0.00,,"REV","CALIFORNIA, Northeast","LASSEN / E
+     201  ASTERN PLUMAS / EAST - LASSEN / EASTERN PLUMAS / EAST",0.00,0.00,0.00,0.00,"Dense ice fog with 1/10 
+     301  mile visibility and ice coating in Pittville, CA.",382077.00 360
+394465    28.00,2/18/2000 0:00:00,"05:50:00 PM","CST",13.00,"CALHOUN","MS","TSTM WIND",0.00,,"CALHOUN CITY",2/
+     101  18/2000 0:00:00,"05:55:00 PM",0.00,,0.00,,"CALHOUN CITY",0.00,0.00,,0.00,0.00,0.00,5.00,"K",0.00,,"M
+     201  EG","MISSISSIPPI, North",,3351.00,8919.00,3351.00,8919.00,"Several trees and power lines were blown 
+     301  down.$",394400.00 317
+406792    47.00,4/20/2000 0:00:00,"05:45:00 PM","CST",111.00,"MACON","TN","HAIL",0.00,,"WILLETTE",4/20/2000 0:
+     101  00:00,"05:45:00 PM",0.00,,0.00,,"WILLETTE",0.00,0.00,,100.00,0.00,0.00,0.00,,0.00,,"OHX","TENNESSEE,
+     201   Central",,3626.00,8552.00,3626.00,8552.00,"Sheriff's office reported quarter size hail.$",406791.00 300
+419119    13.00,6/21/2001 0:00:00,"12:30:00 PM","EST",153.00,"HOUSTON","GA","TSTM WIND",0.00,,"PERRY",6/21/200
+     101  1 0:00:00,"12:30:00 PM",0.00,,0.00,,"PERRY",0.00,0.00,,0.00,0.00,0.00,7.00,"K",0.00,,"FFC","GEORGIA,
+     201   North and Central",,3227.00,8344.00,3227.00,8344.00,"The Houston County 911 center reported that nu
+     301  merous trees were blown down, one of which was on a house.$@$",419044.00 372
+431446    29.00,5/20/2001 0:00:00,"08:47:00 PM","CST",167.00,"POLK","MO","TSTM WIND",0.00,,"BOLIVAR",5/20/2001
+     101   0:00:00,"08:47:00 PM",0.00,,0.00,,"BOLIVAR",0.00,0.00,,0.00,0.00,0.00,0.00,"K",0.00,,"SGF","MISSOUR
+     201  I, Southwest",,3737.00,9325.00,3737.00,9325.00,"Trees were uprooted in Bolivar.",431434.00 290
+443773    48.00,5/29/2001 0:00:00,"08:32:00 PM","CST",101.00,"COTTLE","TX","TORNADO",3.00,"W","LAZARE",5/29/20
+     101  01 0:00:00,"08:33:00 PM",0.00,,3.00,"W","LAZARE",0.10,30.00,"0",0.00,0.00,0.00,0.00,,0.00,,"LUB","TE
+     201  XAS, South Panhandle",,3419.00,10003.00,3419.00,10003.00,"Storm spotters reported a tornado over ope
+     301  n country near the intersection of Farm-to-Market Road 1033 and Farm-to-Market Road 104.$",444248.00 400
+6 The SAS System                                                                                                 19:58 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0                              
+456100    19.00,3/14/2002 0:00:00,"09:00:00 AM","CST",4.00,"IAZ004>005 - 015","IA","ICE STORM",0.00,,,3/14/200
+     101  2 0:00:00,"08:00:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,140.00,"K",0.00,,"DMX","IOWA, Central
+     201  ","EMMET - EMMET - KOSSUTH - PALO ALTO",0.00,0.00,0.00,0.00,"A strong late winter storm system moved
+     301   out of Colorado, then across Kansas and turned northeast into Iowa.  A strong temperature contrast 
+     401  was in place with temperatures in the 70s to low 80s south of the low and sub-freezing temperatures 
+     501  to the north.  Warm air was drawn north over the top of the cold air to the north of the low resulti
+     601  ng in a band of freezing rain over northwest Iowa.  Most of the freezing rain fell just to the north
+     701  west of the Des Moines CWA, however the far northwest corner of the Des Moines CWA received signific
+     801  ant icing.  Freezing rain began in the morning and continued through the day.  Temperatures were jus
+     901  t below freezing over Emmet and northwest Kossuth Counties.  Ice accretions of one half to nearly on
+    1001  e inch were reported over Emmet County, with slightly less over northwest Kossuth and Palo Alto Coun
+    1101  ties.  The ice resulted in power outages across the area and numerous trees were reported downed by 
+    1201  the heavy ice accumulation.  As the storm headed toward southern Wisconsin in the evening, the freez
+    1301  ing rain tapered off and eventually changed to light snow. ",456057.00 1370
+468427    34.00,5/13/2002 0:00:00,"03:45:00 PM","EST",33.00,"SALEM","NJ","TSTM WIND",0.00,,"PENNSVILLE",5/13/2
+     101  002 0:00:00,"04:15:00 PM",0.00,,0.00,,"NORMA",0.00,0.00,,52.00,0.00,0.00,0.00,,0.00,,"PHI","NEW JERS
+     201  EY, South and Northwest",,3939.00,7531.00,3930.00,7505.00,"A severe thunderstorm knocked down tree l
+     301  imbs, trees and power lines from Pennsville Township eastward across Salem County  through Pittsgrov
+     401  e Township. Conectiv Energy reported about 1,500 of their customers lost power in southwestern New J
+     501  ersey that afternoon and evening. ",468365.00 545
+480754    49.00,9/6/2002 0:00:00,"05:30:00 PM","MST",49.00,"UTAH","UT","FLASH FLOOD",0.00,,"ALPINE",9/6/2002 0
+     101  :00:00,"07:30:00 PM",0.00,,0.00,,"PLEASANT GROVE",0.00,0.00,,0.00,0.00,0.00,200.00,"K",0.00,,"SLC","
+     201  UTAH, West and Central",,0.00,0.00,0.00,0.00,"Heavy thunderstorm downpours produced localized flash 
+     301  flooding in Southern Salt Lake and portions of Utah counties. The rain produced a mudslide in Alpine
+     401  , causing extensive damage to one home. About 20 homes in Pleasant Grove reported basement flooding.
+     501   A canal above Bluffdale overflowed, sending a wall of water and mud into a subdivision, flooding at
+     601   least 10 homes. ",480713.00 628
+493081    17.00,8/20/2003 0:00:00,"05:35:00 PM","CST",195.00,"WHITESIDE","IL","TSTM WIND",0.00,,"FULTON",8/20/
+     101  2003 0:00:00,"05:40:00 PM",0.00,,0.00,,"FULTON",0.00,0.00,,50.00,0.00,0.00,5.00,"K",0.00,,"DVN","ILL
+     201  INOIS, Northwest",,4152.00,9010.00,4152.00,9010.00,"Event occurred with the gust front.  6 inch diam
+     301  eter limbs down with gravel blown off the road.$@$Thunderstorms developed during the afternoon in Ce
+     401  ntral Iowa along an old stationary front in hot and humid conditions.  The thunderstorms moved into 
+     501  Eastern Iowa and became severe.  Winds of 50 mph were common along the main gust front breaking many
+     601   small limbs from trees.  The storms reached maximum intensity between 1700 and 1800 CST in Eastern 
+     701  Iowa where a downburst caused severe damage to the NWS office in Davenport, Iowa.  Once the storms c
+     801  rossed the Mississippi River, they quickly lost strength due to the setting sun and moving away from
+     901   the better moisture convergence along the old front.$@",493010.00 966
+505408    31.00,5/4/2003 0:00:00,"01:05:00 PM","CST",141.00,"PLATTE","NE","HAIL",2.00,"W","DUNCAN",5/4/2003 0:
+     101  00:00,"01:05:00 PM",0.00,,2.00,"W","DUNCAN",0.00,0.00,,75.00,0.00,0.00,0.00,,0.00,,"OAX","NEBRASKA, 
+     201  East",,4124.00,9732.00,4124.00,9732.00,,505330.00 249
+517735    48.00,4/29/2003 0:00:00,"05:30:00 PM","CST",353.00,"NOLAN","TX","HAIL",0.00,,"CHAMPION",4/29/2003 0:
+     101  00:00,"06:00:00 PM",0.00,,0.00,,"CHAMPION",0.00,0.00,,175.00,0.00,0.00,0.00,,0.00,,"SJT","TEXAS, Cen
+     201  tral",,3222.00,10037.00,3222.00,10037.00,"Hail from a second severe thunderstorm feel for 30 minutes
+     301  .$",517692.00 313
+530062    15.00,12/20/2004 0:00:00,"10:00:00 PM","HST",1.00,"HIZ001>003 - 006>008 - 012>014 - 016>021 - 023>02
+     101  4 - 026","HI","HEAVY SURF/HIGH SURF",0.00,,,12/23/2004 0:00:00,"08:00:00 PM",0.00,,0.00,,,0.00,0.00,
+     201  ,0.00,1.00,0.00,0.00,,0.00,,"HFO","HAWAII","NIIHAU - NIIHAU - KAUAI WINDWARD - KAUAI LEEWARD - WAIAN
+7 The SAS System                                                                                                 19:58 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0                              
+     301  AE COAST - OAHU NORTH SHORE - OAHU KOOLAU - MOLOKAI WINDWARD - MOLOKAI LEEWARD - LANAI MAKAI - KAHOO
+     401  LAWE - MAUI WINDWARD WEST - MAUI LEEWARD WEST - MAUI CENTRAL VALLEY - WINDWARD HALEAKALA - LEEWARD H
+     501  ALEAKALA - KONA - SOUTH BIG ISLAND - KOHALA",0.00,0.00,0.00,0.00,"A deep storm low northwest of the 
+     601  island chain generated surf of 30 to 40 feet along the north-facing shores of Niihau, Kauai, Oahu, M
+     701  olokai, and Maui; and 10 to 20 feet along the west-facing shores of Niihau, Kauai, Oahu, Lanai, Maui
+     801  , and the Big Island of Hawaii.  One individual drowned in high surf on the Kona coast of the Big Is
+     901  land in the afternoon of the 21st of December.  No serious property damage was reported.  M37IW",530
+    1001  603.00 1006
+542389    28.00,9/12/2004 0:00:00,"04:20:00 PM","CST",103.00,"NOXUBEE","MS","TSTM WIND",2.00,"S","MACON",9/12/
+     101  2004 0:00:00,"04:20:00 PM",0.00,,2.00,"S","MACON",0.00,0.00,,43.00,0.00,0.00,0.10,"K",0.00,,"JAN","M
+     201  ISSISSIPPI, Central",,3305.00,8824.00,3305.00,8824.00,"Two trees were blown down.$",542344.00 293
+554716    46.00,8/3/2004 0:00:00,"10:32:00 AM","CST",99.00,"MINNEHAHA","SD","TSTM WIND",6.00,"NE","HUMBOLDT",8
+     101  /3/2004 0:00:00,"10:32:00 AM",0.00,,6.00,"NE","HUMBOLDT",0.00,0.00,,78.00,0.00,0.00,0.00,,0.00,,"FSD
+     201  ","SOUTH DAKOTA, Southeast",,4343.00,9659.00,4343.00,9659.00,"Thunderstorm winds caused widespread t
+     301  ree, power line, and crop damage. At least one large tree was uprooted, and numerous 3 to 4 inch dia
+     401  meter limbs were blown down.$",554654.00 440
+567043    6.00,9/20/2005 0:00:00,"02:00:00 PM","PST",47.00,"MERCED","CA","HEAVY RAIN",0.00,,"DOS PALOS",9/20/2
+     101  005 0:00:00,"04:55:00 PM",0.00,,0.00,,"DOS PALOS",0.00,0.00,,1.00,0.00,0.00,0.00,,0.00,,"HNX","CALIF
+     201  ORNIA, South Central",,0.00,0.00,0.00,0.00,"The first of 3 known lightning strikes within an hour of
+     301   1400 PST on the west side of Merced County ignited a small fire southwest of Dos Palos in the West-
+     401  Central San Joaquin Valley. Periods of locally heavy thundershowers from moisture released from Hurr
+     501  icane Max occurred. Dos Palos had in excess of 0.50"" causing local street flooding by 1655 PST. In 
+     601  East-Central San Joaquin Valley locally heavy thundershowers were reported over parts of Highway 99.
+     701   The east San Joaquin Valley thunderstorm activity also had smaller hail up to 1/2"" reported at 185
+     801  0 PST 2 miles southeast of Fresno.",567012.00 845
+579370    27.00,6/8/2005 0:00:00,"01:50:00 AM","CST",93.00,"MEEKER","MN","TSTM WIND",2.00,"S","DARWIN",6/8/200
+     101  5 0:00:00,"01:50:00 AM",0.00,,2.00,"SW","DARWIN",0.00,0.00,,55.00,0.00,0.00,0.00,,0.00,,"MPX","MINNE
+     201  SOTA, Central and South Central",,4504.00,9425.00,4505.00,9427.00,"Trees were uprooted and 4 homes a
+     301  nd a deck were damaged along the east shore of Lake Stella along County Road 14.  One man was trappe
+     401  d in a porch when a tree fell on it and had to break a window to escape.  A boat lift and attached b
+     501  oat were blown over a dock and rolled a few feet along the Lake Stella shoreline. Six foot waves wer
+     601  e reported on Lake Stella and water lapped up to County Road 14. In addition, power lines were downe
+     701  d over 650th Avenue near Casey Lake and along 670th Avenue near County Road 9.$",579309.00 790
+591697    40.00,9/13/2005 0:00:00,"07:05:00 PM","CST",119.00,"PAYNE","OK","HAIL",3.00,"N","STILLWATER",9/13/20
+     101  05 0:00:00,"07:05:00 PM",0.00,,3.00,"N","STILLWATER",0.00,0.00,,100.00,0.00,0.00,0.00,,0.00,,"OUN","
+     201  OKLAHOMA, Western, Central and Southeast",,3610.00,9704.00,3610.00,9704.00,,591643.00 285
+604024    1.00,7/30/2006 0:00:00,"10:00:00 AM","CST",97.00,"MOBILE","AL","LIGHTNING",0.00,,"COTTAGE HILL",7/30
+     101  /2006 0:00:00,"10:00:00 AM",0.00,,0.00,,"COTTAGE HILL",0.00,0.00,,0.00,0.00,0.00,40.00,"K",0.00,,"MO
+     201  B","ALABAMA, Southwest",,0.00,0.00,0.00,0.00,"Lightning stuck a home in west Mobile.  The strike cau
+     301  sed a fire in the attic of the home and the roof was heavily damaged by the fire.$",603991.00 393
+616351    20.00,7/3/2006 0:00:00,"03:15:00 PM","CST",131.00,"NEMAHA","KS","HAIL",5.00,"N","WETMORE",7/3/2006 0
+     101  :00:00,"03:15:00 PM",0.00,,5.00,"N","WETMORE",0.00,0.00,,88.00,0.00,0.00,0.00,,0.00,,"TOP","KANSAS, 
+     201  East",,3942.00,9548.00,3942.00,9548.00,"Report relayed by NSSL.$",616633.00 275
+628678    36.00,4/3/2006 0:00:00,"02:50:00 PM","EST",29.00,"ERIE","NY","TSTM WIND",0.00,,"WALES CENTER",4/3/20
+     101  06 0:00:00,"02:50:00 PM",0.00,,0.00,,"WALES CENTER",0.00,0.00,,50.00,0.00,0.00,8.00,"K",0.00,,"BUF",
+     201  "NEW YORK, West",,4246.00,7831.00,4246.00,7831.00,"Thunderstorms developed in a warm, moist flow ove
+     301  r the western Southern Tier of New York during the afternoon hours. The storms produced hail up to 3
+8 The SAS System                                                                                                 19:58 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0                              
+     401  /4"" in Jamestown and damaging winds which downed trees in Hinsdale and Wales Center.",628677.00 496
+641005    48.00,6/1/2006 0:00:00,"12:00:00 AM","CST",21.00,"TXZ021>026","TX","DROUGHT",0.00,,,6/30/2006 0:00:0
+     101  0,"11:59:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,,60.00,"M","LUB","TEXAS, South Panhandle
+     201  ","PARMER - PARMER - CASTRO - SWISHER - BRISCOE - HALL - CHILDRESS",0.00,0.00,0.00,0.00,"The long-te
+     301  rm drought that began in late 2005 over much of the Southern Plains of the U.S. persisted over the e
+     401  xtreme southern Texas Panhandle through the month of June, where severe (D2) drought conditions were
+     501   observed. Although weather and soil conditions remained extremely dry, drought conditions were temp
+     601  orarily downgraded to moderate (D1) over the remainder of the west Texas South Plains region. This d
+     701  owngrade was due to scattered rainfall that fell during numerous episodes of spring and early summer
+     801   convection over the region; yet rainfall totals through the month were generally around fifty perce
+     901  nt of climatological averages. Local farmers and agricultural officials began to report losses by mi
+    1001  d June, when dryland cotton crops across the South Plains initially failed to emerge. At least 300,0
+    1101  00 acres of cotton were destroyed due to the lack of water during the second half of the month.$@$@M
+    1201  any cotton crops also were destroyed by drought related haboobs and other convectively triggered dus
+    1301  t storms. At least 10,000 acres of drought-stressed crops were destroyed by the haboob on June 22nd.
+    1401   Local media sources, farmers, and agricultural agents fear that economic losses will be significant
+    1501   later in the growing season if the drought continues or intensifies. $@$@In addition, many area ran
+    1601  chers were forced to begin selling cattle pre-maturely due to drought-related hardships. The lack of
+    1701   rain during the growing season resulted in poor hay crops. This caused the price of hay to skyrocke
+    1801  t past $130 per ton; up from only $80 per ton one year ago. Ranchers have had difficulty affording h
+    1901  ay to feed the cattle, thus many head of cattle have been sold at very early ages resulting in lower
+    2001   selling prices.",640955.00 2027
+653332    13.00,10/1/2007 0:00:00,"00:00:00 AM","EST",29.00,"GAZ010 - 017 - 026 - 028","GA","DROUGHT",0.00,,,1
+     101  0/31/2007 0:00:00,"23:59:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,"K",0.00,"K","GSP","GEOR
+     201  GIA, Northeast","RABUN - RABUN - HABERSHAM - FRANKLIN - HART",0.00,0.00,0.00,0.00,"EPISODE NARRATIVE
+     301  : Unusually dry weather continued across northeast Georgia through October. Although a soaking rain 
+     401  near the end of the month resulted in near-normal monthly precipitation for the mountains, the Piedm
+     501  ont saw another month of well-below normal rainfall. Most areas were on pace to break yearly rainfal
+     601  l deficit records. By the end of the month, exceptional drought conditions were reported across the 
+     701  majority of the area. Water flow on area streams continued at 3 to 6 percent of normal, while lake l
+     801  evels remained at near-record lows. Although most cities and towns were requesting voluntary water r
+     901  estrictions be observed, mandatory restrictions were ordered in quite a few communities. Also, priva
+    1001  te wells were beginning to dry up in many areas. Agriculture continued to be severely impacted by th
+    1101  e drought. At this time, county by county dollar estimates of drought damage have not been made avai
+    1201  lable.",653310.00 1217
+665659    28.00,4/14/2007 0:00:00,"08:00:00 AM","CST",79.00,"LEAKE","MS","HAIL",4.00,"SSE","CARTHAGE",4/14/200
+     101  7 0:00:00,"08:00:00 AM",0.00,,0.00,,,0.00,0.00,,75.00,0.00,0.00,0.00,"K",0.00,"K","JAN","MISSISSIPPI
+     201  , Central","                                                                                        
+     301                                                                                                      
+     401              ",3240.00,8930.00,0.00,0.00,"EPISODE NARRATIVE: A potent upper level disturbance lifted 
+     501  northeast across the Southern Plains and into the Ohio Valley. As this system evolved and tracked no
+     601  rtheast, severe weather broke out across a large portion of the region between April 13th and 14th. 
+     701  Many reports of large hail, damaging winds and a few isolated tornadoes were received.",665638.00 797
+677986    42.00,6/27/2007 0:00:00,"15:05:00 PM","EST",75.00,"LEBANON","PA","THUNDERSTORM WIND",1.00,"N","LEBAN
+     101  ON",6/27/2007 0:00:00,"15:05:00 PM",0.00,,0.00,,,0.00,0.00,,50.00,0.00,0.00,0.00,"K",0.00,"K","CTP",
+     201  "PENNSYLVANIA, Central","                                                                           
+     301                                                                                                      
+9 The SAS System                                                                                                 19:58 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0                              
+     401                           ",4020.00,7625.00,0.00,0.00,"EVENT NARRATIVE: Lebanon county emergency mana
+     501  ger reported trees down just southwest of the city of Lebanon. EPISODE NARRATIVE: Severe thunderstor
+     601  ms developed during the afternoon on June 27th as near-record heat over Central PA combined with amp
+     701  le moisture creating plenty of instability.",677955.00 754
+690313    72.00,1/2/2007 0:00:00,"18:23:00 PM","AST",7.00,"PRZ007","PR","WILDFIRE",0.00,,,1/2/2007 0:00:00,"18
+     101  :23:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,"K",0.00,"K","SJU","PUERTO RICO","PONCE AND V
+     201  ICINITY - PONCE AND VICINITY",0.00,0.00,0.00,0.00,"EVENT NARRATIVE: A grassland fire was reported al
+     301  ong Highway 52 from the municipality of Guayama to Ponce. EPISODE NARRATIVE: Due to the lack of sign
+     401  ificant tropical waves during the period of 2006 where we normally get beneficial rainfall, the accu
+     501  mulated rainfall values through the end of the year 2006 decreased, and the 2007 begun with rainfall
+     601   deficit. This was evident along the south coast and southern slopes of Puerto Rico. Grassland fires
+     701   which normally affect the island during the latter part part of the dry season were reported in man
+     801  y municipalities.",690292.00 828
+702640    18.00,7/20/2008 0:00:00,"20:37:00 PM","EST",61.00,"HARRISON","IN","HAIL",1.00,"WNW","KINGS STORE",7/
+     101  20/2008 0:00:00,"20:37:00 PM",0.00,,0.00,,,0.00,0.00,,75.00,0.00,0.00,0.00,"K",0.00,"K","LMK","INDIA
+     201  NA, South Central","                                                                                
+     301                                                                                                      
+     401                      ",3812.00,8605.00,0.00,0.00,"EPISODE NARRATIVE: A line of severe thunderstorms m
+     501  oved across south central Indiana bringing damaging winds and severe hail.",702588.00 585
+714967    27.00,7/7/2008 0:00:00,"17:28:00 PM","CST",9.00,"BENTON","MN","THUNDERSTORM WIND",1.00,"SW","FOLEY",
+     101  7/7/2008 0:00:00,"17:28:00 PM",0.00,,0.00,,,0.00,0.00,,50.00,0.00,0.00,0.00,"K",0.00,"K","MPX","MINN
+     201  ESOTA, Central and South Central","                                                                 
+     301                                                                                                      
+     401                                     ",4539.00,9357.00,0.00,0.00,"EVENT NARRATIVE: Three inch tree lim
+     501  bs severed. EPISODE NARRATIVE: A warm frontal boundary draped across central and south central Minne
+     601  sota was the catalyst for scattered severe thunderstorms across portions of the region.",714898.00 698
+727294    37.00,12/31/2008 0:00:00,"03:43:00 AM","EST",1.00,"NCZ001","NC","HIGH WIND",0.00,,,12/31/2008 0:00:0
+     101  0,"03:43:00 AM",0.00,,0.00,,,0.00,0.00,,61.00,0.00,0.00,0.00,"K",0.00,"K","RNK","NORTH CAROLINA, Nor
+     201  thwest and North Central","ASHE - ASHE",0.00,0.00,0.00,0.00,"EVENT NARRATIVE: Sustained winds in Wes
+     301  t Jefferson were measured at 52 mph with gusts to 70 MPH. EPISODE NARRATIVE: A fast moving low press
+     401  ure system tracking across the Ohio Valley pulled a strong cold front through the Southern Appalachi
+     501  ans during the morning of the 31st. Wind damage was widespread and extended into the foothill counti
+     601  es.",727232.00 614
+739621    48.00,10/4/2008 0:00:00,"14:40:00 PM","CST",117.00,"DEAF SMITH","TX","THUNDERSTORM WIND",2.00,"NW","
+     101  HEREFORD",10/4/2008 0:00:00,"14:40:00 PM",0.00,,0.00,,,0.00,0.00,,51.00,0.00,0.00,0.00,"K",0.00,"K",
+     201  "AMA","TEXAS, North Panhandle","                                                                    
+     301                                                                                                      
+     401                                  ",3450.00,10225.00,0.00,0.00,"EVENT NARRATIVE: The thunderstorm wind
+     501   gust was measured at the West Texas Mesonet station located two miles northwest of Hereford. The De
+     601  af Smith County Emergency Manager also relayed a report of wind gusts estimated to be near fifty-two
+     701   knots. EPISODE NARRATIVE: A severe thunderstorm over the southwest Texas Panhandle produced strong 
+     801  winds during the afternoon hours...however no damage or injuries were reported.",739559.00 890
+751948    49.00,3/9/2009 0:00:00,"03:00:00 AM","MST",2.00,"UTZ002","UT","HEAVY SNOW",0.00,,,3/10/2009 0:00:00,
+     101  "05:00:00 AM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,"K",0.00,"K","SLC","UTAH, West and Central
+     201  ","NORTHERN WASATCH FRONT - NORTHERN WASATCH FRONT",0.00,0.00,0.00,0.00,"EPISODE NARRATIVE: A cold f
+     301  ront entered Utah early on March 9th and then stalled, bringing a period of heavy snowfall to the fa
+     401  r northern portions of the state. The front then continued to slowly move south, bringing heavy snow
+10 The SAS System                                                                                                19:58 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0                              
+     501   to the rest of the Wasatch Front and parts of central Utah.EVENT NARRATIVE: Brigham City received 1
+     601  3 new inches of snow for the storm, while Northeast Ogden Bench received 11.5 inches of snow.",75205
+     701  6.00 704
+764275    18.00,6/22/2009 0:00:00,"07:13:00 AM","EST",105.00,"MONROE","IN","FLASH FLOOD",1.00,"W","BLOOMINGTON
+     101  ",6/22/2009 0:00:00,"09:18:00 AM",0.00,,1.00,"WSW","BLOOMINGTON",0.00,0.00,,0.00,0.00,0.00,1.00,"K",
+     201  0.00,"K","IND","INDIANA, Central","                                                                 
+     301                                                                                                      
+     401                                     ",3910.00,8632.00,3909.00,8632.00,"EPISODE NARRATIVE: Scattered t
+     501  hunderstorms pushed southeast through Central Indiana on the morning of the 22nd.  Numerous observat
+     601  ions of flash flooding were reported, as well as a lone thunderstorm wind damage report from Lawrenc
+     701  e County.EVENT NARRATIVE: Streets were reported to be flooded in Bloomington due to thunderstorm hea
+     801  vy rainfall.",764234.00 823
+776602    24.00,7/23/2009 0:00:00,"01:30:00 PM","EST",31.00,"MONTGOMERY","MD","LIGHTNING",1.00,"SE","WOODHAVEN
+     101  ",7/23/2009 0:00:00,"01:30:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,1.00,0.00,"K",0.00,"K","LWX","MA
+     201  RYLAND, Central","                                                                                  
+     301                                                                                                      
+     401                    ",3859.00,7707.00,0.00,0.00,"EPISODE NARRATIVE: A warm front pushed through Maryla
+     501  nd on the 23rd. A southeast flow ahead of the front ushered in plenty of moisture from the Atlantic 
+     601  Ocean. The moisture combined with the warm front triggered showers and thunderstorms. An isolated th
+     701  understorm did become severe.EVENT NARRATIVE: A man was injured due to a lightning strike close by a
+     801  t the Congressional Golf Course in Bethesda.",776591.00 855
+788929    51.00,11/11/2009 0:00:00,"12:00:00 PM","EST",109.00,"LOUISA","VA","HEAVY RAIN",0.00,"N","BUMPASS",11
+     101  /13/2009 0:00:00,"12:00:00 PM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,"K",0.00,"K","AKQ","VIRGI
+     201  NIA, East","                                                                                        
+     301                                                                                                      
+     401              ",3758.00,7743.00,0.00,0.00,"EPISODE NARRATIVE: An intense nor'easter produced heavy rai
+     501  n across much of central and eastern Virginia. Rainfall amounts ranged from three to as much as thir
+     601  teen inches over the area, with the highest totals between seven and thirteen inches occurring over 
+     701  southeast Virginia.EVENT NARRATIVE: Rainfall amounts ranged between three and five inches across the
+     801   county. Bumpass recorded 3.86 inches of rain. Gordonsville recorded 3.27 inches of rain.",788866.00 900
+801256    19.00,4/2/2010 0:00:00,"10:50:00 AM","CST",125.00,"MARION","IA","THUNDERSTORM WIND",0.00,"N","COLUMB
+     101  IA",4/2/2010 0:00:00,"10:50:00 AM",0.00,,0.00,,,0.00,0.00,,60.00,0.00,0.00,10.00,"K",0.00,"K","DMX",
+     201  "IOWA, Central","                                                                                   
+     301                                                                                                      
+     401                   ",4110.00,9309.00,0.00,0.00,"EPISODE NARRATIVE: The seasons first severe weather oc
+     501  curred around mid day on the 2nd.  Strong and deep southerly flow was in place across the central U.
+     601  S.  Low pressure at the surface moved from southwest Kansas on the evening of the 1st, to eastern No
+     701  rth Dakota by early afternoon of the 2nd.  A cold front extending south from the low moved into Iowa
+     801   on the morning of the 2nd.  A low level jet of 40 to 50 kts was in place during the morning of the 
+     901  2nd.  The upper level jet was around 100 kts at the time.  The overall sounding was nearly unidirect
+    1001  ional.  There was limited CAPE available, around 500 J/kg of elevated CAPE, but sufficient dynamics 
+    1101  were in place.  The 0-1 km shear was between 30 and 40 kts.  Thunderstorms developed along the cold 
+    1201  front and moved rapidly northeast at 70 to 80 MPH across southern Iowa.  The storms produced sub-sev
+    1301  ere hail and winds of 60 to 70 MPH as they passed.  High winds blew a grain bin across a street, dow
+    1401  ned large tree branches, and tore siding off of a house in Decatur County.  Street signs were damage
+    1501  d in Lacona in Warren County, while part of a roof was torn off in Marion County at Columbia.  The s
+    1601  torms weakened during the early afternoon hours, but still produced winds as the moved into central 
+11 The SAS System                                                                                                19:58 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0                              
+    1701  and northeast Iowa.  A 59 MPH wind gust was recorded at the Waterloo Airport.  Overall damage was li
+    1801  mited, in part due to the fact that the trees had not leafed out yet.EVENT NARRATIVE: Part of a roof
+    1901   was blown off of a coop building in Columbia.",801203.00 1957
+813583    48.00,6/2/2010 0:00:00,"03:25:00 PM","CST",441.00,"TAYLOR","TX","THUNDERSTORM WIND",0.00,"N","ABILEN
+     101  E",6/2/2010 0:00:00,"03:25:00 PM",0.00,,0.00,,,0.00,0.00,,56.00,0.00,0.00,0.00,"K",0.00,"K","SJT","T
+     201  EXAS, Central","                                                                                    
+     301                                                                                                      
+     401                  ",3227.00,9943.00,0.00,0.00,"EPISODE NARRATIVE: An upper level disturbance interacte
+     501  d with an extremely unstable atmosphere and resulted in the development of scattered thunderstorms a
+     601  cross West Central Texas. Some of the storms were severe and produced large hail and damaging winds.
+     701  EVENT NARRATIVE: A section of roof on the engine house of Fire Station No. 4 in Abilene was peeled b
+     801  ack.",813512.00 815
+825910    29.00,7/29/2010 0:00:00,"03:49:00 PM","CST",43.00,"CHRISTIAN","MO","THUNDERSTORM WIND",3.00,"N","CHR
+     101  ISTIAN CENTER",7/29/2010 0:00:00,"03:49:00 PM",0.00,,0.00,,,0.00,0.00,,52.00,0.00,0.00,15.00,"K",0.0
+     201  0,"K","SGF","MISSOURI, Southwest","                                                                 
+     301                                                                                                      
+     401                                     ",3658.00,9310.00,0.00,0.00,"EPISODE NARRATIVE: Isolated thunders
+     501  torms developed across portions of the Missouri Ozarks during the early evening. The storms develope
+     601  d in a very moist and unstable atmosphere and produced isolated heavy rain and flash flooding along 
+     701  with localized wind damage.EVENT NARRATIVE: A roof of a hay barn was damaged and collapsed onto a ne
+     801  arby horse barn along Missouri Highway W south of Ozark.",825840.00 867
+838237    21.00,12/12/2010 0:00:00,"04:00:00 AM","EST",115.00,"KYZ115","KY","WINTER WEATHER",0.00,,,12/13/2010
+     101   0:00:00,"04:04:00 AM",0.00,,0.00,,,0.00,0.00,,0.00,0.00,0.00,0.00,"K",0.00,"K","JKL","KENTUCKY, Eas
+     201  tern","PERRY - PERRY",0.00,0.00,0.00,0.00,"EPISODE NARRATIVE: The first significant snow storm of th
+     301  e 2010-11 winter season dumped between 2 and 12 inches of snow on eastern Kentucky on December 12th 
+     401  and 13th. The highest snowfall totals occurred in Bell, Lee, and Leslie, and McCreary counties where
+     501   10-12 inches were reported. There were several culprits for this snow event, as areas of low pressu
+     601  re moving across the lower Great Lakes and up the eastern slopes of the Appalachian Mountains combin
+     701  ed forces over the Ohio and Tennessee valleys. The highest snowfall totals occurred along the Kentuc
+     801  ky River basin as an intense band of moderate to heavy snowfall remained in place there during the o
+     901  vernight hours.EVENT NARRATIVE: A law enforcement official reported a 24 hour snowfall total in Haza
+    1001  rd of 5.3 inches.",838216.00 1028
+850564    40.00,4/20/2011 0:00:00,"02:26:00 PM","CST",89.00,"MCCURTAIN","OK","HAIL",1.00,"W","BROKEN BOW",4/20
+     101  /2011 0:00:00,"02:26:00 PM",0.00,,0.00,,,0.00,0.00,,1.00,0.00,0.00,0.00,"K",0.00,"K","SHV","OKLAHOMA
+     201  , Extreme Southeast","                                                                              
+     301                                                                                                      
+     401                        ",3401.00,9444.00,0.00,0.00,"EPISODE NARRATIVE: The cold front, responsible fo
+     501  r producing widespread severe weather across southern and southwest Arkansas during the evening of t
+     601  he 19th and early morning hour of the 20th, stalled out across the region during the afternoon and e
+     701  vening of the 20th. This boundary...combined with daytime heating, helped to spawn vigorous thunders
+     801  torm growth and many of these storms producing strong and damaging wind gusts, along with large hail
+     901   and flash flooding.  These thunderstorms continued into the morning of the 21st as well.EVENT NARRA
+    1001  TIVE: ",850544.00 1017
+862891    40.00,5/23/2011 0:00:00,"08:25:00 PM","CST",79.00,"LE FLORE","OK","THUNDERSTORM WIND",1.00,"NW","BOK
+     101  OSHE",5/23/2011 0:00:00,"08:25:00 PM",0.00,,0.00,,,0.00,0.00,,61.00,0.00,0.00,5.00,"K",0.00,"K","TSA
+     201  ","OKLAHOMA, Eastern","                                                                             
+     301                                                                                                      
+12 The SAS System                                                                                                19:58 Monday, June 15, 2015
+
+RULE:     ----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0                              
+     401                         ",3511.00,9447.00,0.00,0.00,"EPISODE NARRATIVE: Thunderstorms developed durin
+     501  g the early morning hours across northeastern Oklahoma and southeastern Kansas in response to an app
+     601  roaching upper level disturbance and increasing low level jet. These storms moved east across the re
+     701  gion producing damaging wind, large hail and flash flooding. Another round of severe thunderstorms m
+     801  oved into eastern Oklahoma from the west during the late afternoon and evening hours producing damag
+     901  ing wind and flash flooding.EVENT NARRATIVE: Several power lines were blown down by strong thunderst
+    1001  orm wind.",862829.00 1020
+875218    47.00,6/18/2011 0:00:00,"01:01:00 PM","CST",103.00,"LINCOLN","TN","THUNDERSTORM WIND",1.00,"NE","FAY
+     101  ETTEVILLE ARPT",6/18/2011 0:00:00,"01:06:00 PM",0.00,,0.00,,,0.00,0.00,,56.00,0.00,0.00,15.00,"K",0.
+     201  00,"K","HUN","TENNESSEE, South Central","                                                           
+     301                                                                                                      
+     401                                           ",3504.00,8633.00,0.00,0.00,"EPISODE NARRATIVE: A severe me
+     501  soscale convective system (MCS) that originated in central Kansas on the 17th progressed east and so
+     601  utheast into the Tennessee Valley during the afternoon of the 18th.  Several small scale bow echoes 
+     701  produced the strongest wind damage, while a larger scale gust front produced widespread sub-severe w
+     801  inds of 30 to 50 mph.  These winds still knocked large tree limbs and small trees down.  A swath of 
+     901  wind damage was reported across much of Lincoln County.  Another gust front produced numerous report
+    1001  s of damage in Franklin County.EVENT NARRATIVE: Fences and trailers were damaged along Prospect road
+    1101  .  An oak tree 3 feet in diameter was also knocked down.",875147.00 1167
+887545    85.00,7/30/2011 0:00:00,"10:55:00 PM","EST",853.00,"GMZ853","GM","MARINE THUNDERSTORM WIND",2.00,"SS
+     101  E","LONGBOAT KEY",7/30/2011 0:00:00,"10:55:00 PM",0.00,,0.00,,,0.00,0.00,,42.00,0.00,0.00,0.00,"K",0
+     201  .00,"K","TBW","GULF OF MEXICO","ENGLEWOOD TO TARPON SPRINGS FL - ENGLEWOOD TO TARPON SPRINGS FL",272
+     301  4.00,8233.00,0.00,0.00,"EPISODE NARRATIVE: Scattered afternoon seabreeze thunderstorms pushed offsho
+     401  re and caused a strong marine wind gust.EVENT NARRATIVE: The ASOS at the Sarasota-Bradenton Internat
+     501  ional Airport measured a wind gust of 42 knots.",887535.00 558
+899872    48.00,11/26/2011 0:00:00,"09:55:00 AM","CST",39.00,"TXZ039","TX","HIGH WIND",0.00,,,11/26/2011 0:00:
+     101  00,"12:45:00 PM",0.00,,0.00,,,0.00,0.00,,37.00,0.00,0.00,0.00,"K",0.00,"K","LUB","TEXAS, South Panha
+     201  ndle","YOAKUM - YOAKUM",0.00,0.00,0.00,0.00,"EPISODE NARRATIVE: On the morning of the 26th, a strong
+     301   upper level storm system crossed over the West Texas region. Strong mid and upper level winds sprea
+     401  d over the region during the morning hours as a strong pressure gradient developed. With significant
+     501   atmospheric subsidence on the back side of the storm system, some of these winds were transferred t
+     601  o the surface. Additionally, a strong cold front moved across the South Plains of West Texas during 
+     701  the morning hours. Much of the South Plains and part of the southeastern Texas Panhandle experienced
+     801   severe sustained winds or severe wind gusts. Despite the strong winds, no damage was reported.@@The
+     901   following reports are courtesy of the Texas Tech University West Texas Mesonet and the KVII-TV Scho
+    1001  olnet.@@Sustained wind reports: Castro County (47 mph), Parmer County (44 mph), Lamb County (43 mph)
+    1101  , Briscoe County (42 mph), Yoakum County (42 mph), Crosby County (42 mph), Hale County (42 mph), Gar
+    1201  za County (41 mph), Terry County (41 mph), Lynn County (41 mph), Hockley County (41 mph).@@Wind gust
+    1301   reports: Cochran County (62 mph), Lubbock County (60 mph), Swisher County (59 mph), Hall County (58
+    1401   mph), Motley County (58 mph).EVENT NARRATIVE: ",902117.00 1458
+NOTE: 902297 records were read from the infile IN.
+      The minimum record length was 150.
+      The maximum record length was 16384.
+      One or more lines were truncated.
+NOTE: The data set WORK.STORM_BLOATED has 902297 observations and 34 variables.
+
+92         
+13 The SAS System                                                                                                19:58 Monday, June 15, 2015
+
+93         %SQUEEZE(Storm_Bloated, out.Storm)
+
+NOTE: The data set WORK._CNTNTS_ has 34 observations and 2 variables.
+
+
+NOTE: There were 34 observations read from the data set WORK._CNTNTS_.
+
+
+
+NOTE: There were 902297 observations read from the data set WORK.STORM_BLOATED.
+
+
+NOTE: Deleting WORK._CNTNTS_ (memtype=DATA).
+
+
+
+
+
+WARNING: Multiple lengths were specified for the variable state by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable bgn_date by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable bgn_time by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable time_zone by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable county by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable evtype by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable bgn_range by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable bgn_azi by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable bgn_locati by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable end_date by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable end_time by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable county_end by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable countyendn by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable end_range by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable end_azi by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable end_location by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable len by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable wid by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable f by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable mag by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable fatalities by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable injuries by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable propdmg by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable propdmgexp by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable cropdmg by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable cropdmgexp by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable wfo by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable stateoffic by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable latitude by input data set(s). This may cause truncation of data.
+WARNING: Multiple lengths were specified for the variable longitude by input data set(s). This may cause truncation of data.
+14 The SAS System                                                                                                19:58 Monday, June 15, 2015
+
+NOTE: There were 902297 observations read from the data set WORK.STORM_BLOATED.
+NOTE: The data set OUT.STORM has 902297 observations and 34 variables.
+
+94         run;
+95         
+96         proc datasets lib=out nolist;
+97             contents data=Storm order=ignorecase;
+98             quit;
+
+NOTE: The PROCEDURE DATASETS printed pages 1-2.
+
+99             run;
+100        
+101        endsas;
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+The SAS System                                                                                               19:58 Monday, June 15, 2015   1
+
+The DATASETS Procedure
+
+Data Set Name        OUT.STORM                            Observations          902297
+Member Type          DATA                                 Variables             34    
+Engine               V9                                   Indexes               0     
+Created              Monday, June 15, 2015 08:32:26 PM    Observation Length    1431  
+Last Modified        Monday, June 15, 2015 08:32:26 PM    Deleted Observations  0     
+Protection                                                Compressed            NO    
+Data Set Type                                             Sorted                NO    
+Label                                                                                 
+Data Representation  WINDOWS_64                                                       
+Encoding             wlatin1  Western (Windows)                                       
+
+
+                   Engine/Host Dependent Information
+
+Data Set Page Size          16384                                       
+Number of Data Set Pages    82028                                       
+First Data Page             1                                           
+Max Obs per Page            11                                          
+Obs in First Data Page      8                                           
+Number of Data Set Repairs  0                                           
+Filename                    E:\USERS\OUTCOMES\Ken_K\Other\storm.sas7bdat
+Release Created             9.0202M0                                    
+Host Created                X64_SRV                                     
+
+
+Alphabetic List of Variables and Attributes
+ 
+ #    Variable        Type     Len
+
+ 9    bgn_azi         Char       3
+ 2    bgn_date        Char      18
+10    bgn_locati      Char      21
+ 8    bgn_range       Char       7
+ 3    bgn_time        Char      11
+ 5    county          Char       6
+13    county_end      Char       4
+14    countyendn      Char       1
+ 6    countyname      Char      50
+26    cropdmg         Char       6
+27    cropdmgexp      Char       1
+16    end_azi         Char       3
+11    end_date        Char      18
+17    end_location    Char      21
+15    end_range       Char       6
+12    end_time        Char      12
+ 7    evtype          Char      30
+The SAS System                                                                                               19:58 Monday, June 15, 2015   2
+
+The DATASETS Procedure
+
+Alphabetic List of Variables and Attributes
+ 
+ #    Variable        Type     Len
+
+20    f               Char       1
+22    fatalities      Char       6
+23    injuries        Char       7
+31    latitude        Char       7
+18    len             Char       7
+32    longitude       Char       9
+21    mag             Char       8
+24    propdmg         Char       7
+25    propdmgexp      Char       1
+34    refnum          Char      50
+33    remarks         Char    1000
+ 1    state           Char       2
+29    stateoffic      Char      45
+ 4    time_zone       Char       3
+28    wfo             Char       3
+19    wid             Char       7
+30    zonenames       Char      50
+
